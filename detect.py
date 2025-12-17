@@ -168,7 +168,7 @@ class Detection:
 
 class DroneDetector:
     """YOLOv5-based detector for drone autonomous flight"""
-    def __init__(self, weights=ROOT / "yolov5s.pt", device="", conf_thres=0.25, iou_thres=0.45, jetson_nano=False):
+    def __init__(self, weights=ROOT / "yolov5n.pt", device="", conf_thres=0.25, iou_thres=0.45, jetson_nano=False):
         self.device = select_device(device)
         self.jetson_nano = jetson_nano
         
@@ -284,7 +284,7 @@ def setup():
 
 @smart_inference_mode()
 def run(
-    weights=ROOT / "yolov5s.pt",  # model path or triton URL
+    weights=ROOT / "yolov5n.pt",  # model path or triton URL
     source="0",  # webcam by default for drone
     data=ROOT / "data/coco128.yaml",  # dataset.yaml path
     imgsz=(640, 640),  # inference size (height, width)
@@ -589,7 +589,7 @@ def parse_opt():
     parser = argparse.ArgumentParser(description='Autonomous Drone Detection and Tracking System')
     
     # YOLOv5 detection parameters
-    parser.add_argument("--weights", nargs="+", type=str, default=ROOT / "yolov5s.pt", help="model path or triton URL")
+    parser.add_argument("--weights", nargs="+", type=str, default=ROOT / "yolov5n.pt", help="model path or triton URL")
     parser.add_argument("--source", type=str, default="0", help="file/dir/URL/glob/screen/0(webcam)")
     parser.add_argument("--data", type=str, default=ROOT / "data/coco128.yaml", help="(optional) dataset.yaml path")
     parser.add_argument("--imgsz", "--img", "--img-size", nargs="+", type=int, default=[640], help="inference size h,w")
